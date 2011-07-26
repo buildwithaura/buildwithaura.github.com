@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Recipes</title>
+<meta charset='UTF-8' />
+<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
+<meta content='width=device-width, initial-scale=1.0' name='viewport' />
+<link href='./style.css?1311691016' rel='stylesheet' />
+</head>
+<body>
+<div id='top'>
+<a href='' id='logo'>
+Aura manual
+</a>
+</div>
+<div id='area'>
+<div id='content'>
+<div class='c'>
+<div id='crumbs'>
+<a href='./index.html'>Aura manual</a>
+<span class='gt'>&rarr;</span>
+<strong>Recipes</strong>
+</div>
+<hgroup>
+<h1>Recipes</h1>
+</hgroup>
+<div class='content'>
+<h2>Creating extensions</h2>
+
+<p>(See {file:Extensions.md Extensions} for more info.)</p>
+
+<p>Step 1: Make the folder <code>extensions/my_extension/</code>. All of these files and
+folders are optional.</p>
+
+<pre><code>./
+`- extensions/
+   `- my_extension/
+      |
+      |- info.yml           - Description of the extension
+      |- init.rb            - The main file to be loaded
+      |
+      |- models/            - Models (all files auto loaded)
+      |- helpers/           - Helpers (Auto-loaded)
+      |- routes/            - Routes  (Auto-loaded)
+      |
+      |- views/             - HAML's and stuff
+      |  `- css/            - CSS (any `foo.scss` here will be accessible 
+      |                            as `yoursite.com/css/foo.css`)
+      |
+      `- public/            - Everything here will be accessible
+</code></pre>
+
+<p>Step 2: Add the extension to <code>config/extensions.rb</code> under
+<code>additional_extensions</code>.  If this file doesn't exist, copy it from
+<code>config/defaults/</code>.</p>
+
+<h1>Creating a theme</h1>
+
+<p>A theme is just an extension.</p>
+
+<ul>
+<li>Make an extension that has a <code>mytheme/views/</code> folder</li>
+<li>Make up a <code>mytheme/views/layout.haml</code></li>
+<li>Override the look of a page in <code>mytheme/views/base/default.haml</code></li>
+<li>Put public stuff (images et al) in <code>mytheme/public/</code></li>
+<li>Put CSS files in <code>mytheme/views/css/</code></li>
+</ul>
+
+
+<h1>Creating custom page types</h1>
+
+<pre><code>class Aura::Models::Page
+  subtype :portfolio,
+    :name     =&gt; "Portfolio page",
+    :template =&gt; "id_portfolio"
+
+  custom_field :excerpt
+
+  form :portfolio do
+    text :excerpt, "Portfolio excerpt"
+    end
+end
+</code></pre>
+
+<h1>Adding something to the admin sidebar</h1>
+
+<p>If it's a model you want on there:</p>
+
+<p>   class Aura::Models::MyModel</p>
+
+<pre><code> def self.show_on_sidebar?; true; end
+</code></pre>
+
+<p>   end</p>
+
+<p>Something else:</p>
+
+<p>   # extensions/my_extension/init.rb
+   Aura::Admin.menu.add "id",</p>
+
+<pre><code> :name =&gt; "My menu entry",
+ :href =&gt; '/admin/foo',
+ :icon =&gt; 'settings'
+</code></pre>
+
+</div>
+</div>
+<nav id='nav'>
+<nav>
+<h4>Classes</h4>
+<ul>
+<li>
+<a class='' href='./aura.html'>
+Aura
+</a>
+</li>
+<li>
+<a class='' href='./menu.html'>
+Menu
+</a>
+</li>
+</ul>
+</nav>
+<nav>
+<h4>Sections</h4>
+<ul>
+<li>
+<a class='' href='./configuration.html'>
+Configuration
+</a>
+</li>
+<li>
+<a class='' href='./extensions.html'>
+Extensions
+</a>
+</li>
+<li>
+<a class='more' href='./helpers.html'>
+Helpers
+</a>
+</li>
+<li>
+<a class='' href='./models.html'>
+Models
+</a>
+</li>
+<li>
+<a class='active' href='./recipes.html'>
+Recipes
+</a>
+</li>
+<li>
+<a class='' href='./views.html'>
+Views
+</a>
+</li>
+</ul>
+</nav>
+</nav>
+</div>
+</div>
+<script src='http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js' type='text/javascript'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+<script type='text/javascript'>
+  //<![CDATA[
+    $(function () {
+      $("pre").each(function() {
+        var r = /\[(.*?)\s*\((.*?)\)\]\n*/;
+        var m = $(this).text().match(r);
+    
+        $(this).addClass('prettyprint');
+    
+        if (m) {
+          var file = m[1];
+          var type = m[2];
+          $(this).addClass('lang-'+type);
+    
+          if (file.length) {
+            $(this).addClass('has-caption');
+            $(this).prepend($("<h5 class='caption'>").text(file));
+          }
+    
+          $(this).html($(this).html().replace(r, ''));
+        }
+    
+        if ($(this).text().match(/^\s*([a-zA-Z_~\/]*)\$ /)) {
+          $(this).addClass('terminal');
+          $(this).removeClass('prettyprint');
+          $(this).html($(this).html().replace(/([a-zA-Z_~\/]*\$ )(.*?)[\r\n$]/g, "<strong><em>$1</em>$2</strong>\n"));
+        }
+      });
+    
+      prettyPrint();
+    });
+  //]]>
+</script>
+</body>
+</html>
