@@ -5,7 +5,7 @@
 <meta charset='UTF-8' />
 <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
 <meta content='width=device-width, initial-scale=1.0' name='viewport' />
-<link href='./style.css?1311691016' rel='stylesheet' />
+<link href='./style.css?1311691840' rel='stylesheet' />
 </head>
 <body>
 <div id='top'>
@@ -23,32 +23,73 @@ Aura manual
 <h1>Aura manual</h1>
 </hgroup>
 <div class='content'>
-<p>Aura is a CMS. It aims to make people's lives easier. (+)</p>
+<p>Aura is a <span class="caps">CMS</span>. It aims to make people&#8217;s lives easier.</p>
+<section class='literate'>
+<pre>
+$ gem install aura --pre
 
+$ aura
+</pre>
+<h4>Installation</h4>
+<p>Assuming you have Ruby installed (at least 1.8.7), just install the gem.</p>
+</section>
+<h2>Getting started</h2>
+<section class='literate'>
+<pre>
+$ aura new myproject
+   create  myproject/
+   create    config.ru
+   create    init.rb
+   create    app/
+   create      models/
+   create        page.rb.example
+   ...
+</pre>
+<h4>Start a new project</h4>
+<p>Start a new project using <a href="aura_new.html"><code>aura new</code></a>. This creates a folder with a simple bare-bone Aura project.</p>
+</section>
+<section class='literate'>
+<pre>
+$ cd myproject/
+$ bundle install
+  ...
+</pre>
+<h4>Install the needed gems</h4>
+<p>Using Bundler, this is pretty easy.</p>
+</section>
+<section class='literate'>
+<pre>
+$ thin start
+* Starting server...
+&gt;&gt; Thin web server (v1.2.11 codename Bat-Shit Crazy)
+&gt;&gt; Maximum connections set to 1024
+&gt;&gt; Listening on 0.0.0.0:4833, CTRL+C to stop
+</pre>
+<h4>Start it up</h4>
+<p>Your app is a Rack app. Visit <strong>http://localhost:4833</strong> to see it. (Default user is `test@sinefunc.com`/`password`)</p>
+</section>
+<h2>Features</h2>
 <ul>
-<li><p><strong>For designers</strong> and site builders:</p>
-
+	<li><b>For designers</b> and site builders:
+	<ul>
+		<li>Be in full control of markup, and write in whatever template language you&#8217;re comfortable with.</li>
+		<li>Build custom page types that will the custom fields you need with the template you define.</li>
+	</ul></li>
+</ul>
 <ul>
-<li>Be in full control of markup, and write in whatever template language you're comfortable with.</li>
-<li>Build custom page types that will the custom fields you need with the template you define.</li>
+	<li><b>For site owners:</b>
+	<ul>
+		<li>Use a <span class="caps">CMS</span> with an interface you will love, rather than put up with.</li>
+	</ul></li>
 </ul>
-</li>
-<li><p><strong>For site owners:</strong></p>
-
 <ul>
-<li>Use a CMS with an interface you will love, rather than put up with.</li>
+	<li><b>For developers:</b>
+	<ul>
+		<li>Easy-to-extend with a simple extension system.</li>
+		<li>Built on top of <a href="http://sinatrarb.com">Sinatra</a>, a tried and tested microframework.</li>
+	</ul></li>
 </ul>
-</li>
-<li><p><strong>For developers:</strong></p>
-
-<ul>
-<li>Easy-to-extend with a simple extension system.</li>
-<li>Built on top of Sinatra, a tried and tested microframework.</li>
-</ul>
-</li>
-</ul>
-
-
+<p><a class='github-link' href="http://github.com/aura-cms/aura">Source code</a></p>
 <h3>Classes</h3>
 <ul class='section'>
 <li>
