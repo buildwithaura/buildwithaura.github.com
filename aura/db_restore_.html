@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<title>MenuItem</title>
+<title>db_restore</title>
 <meta charset='UTF-8' />
 <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
 <meta content='width=device-width, initial-scale=1.0' name='viewport' />
@@ -24,21 +24,28 @@ Aura manual
 <span class='gt'>&rarr;</span>
 <a href='../aura.html'>Aura</a>
 <span class='gt'>&rarr;</span>
-<strong>MenuItem</strong>
+<strong>db_restore</strong>
 </div>
 <hgroup>
-<h1>MenuItem</h1>
-<h5>A menu item.</h5>
+<h1>db_restore</h1>
+<h5>Restores a previous output of db_dump.</h5>
 </hgroup>
 <div class='content'>
-<h2>Description</h2>
+<p>This function takes in the parameter <code>hash</code>, which is a hash table
+with the keys as the table names, and it's values are arrays of
+records.</p>
 
-<p>   This is an OpenStruct.</p>
+<p>See #db_dump for an example of the hash that #db_restore expects.</p>
 
-<p>   It will always have <code>.path</code> and <code>.key</code>.
-   Optional items are <code>.name</code>, <code>.href</code>, and <code>.position</code>.</p>
+<h2>Example</h2>
 
-<p>   Methods such as <a href="../aura/menu/items_.html">items</a> <span class='context'>(Aura::Menu)</span> and <a href="../aura/menu/get_.html">get</a> <span class='context'>(Aura::Menu)</span> return menu items.</p>
+<pre><code># Load a previously saved copy of the hash, as spitted out
+# by db_dump.
+yaml_data = YAML::load_file 'backup.yml'
+
+# Load it.
+Aura.db_restore(yaml_data)
+</code></pre>
 
 </div>
 </div>
@@ -75,7 +82,7 @@ Menu
 </a>
 </li>
 <li>
-<a class='active' href='../aura/menuitem.html'>
+<a class='' href='../aura/menuitem.html'>
 MenuItem
 </a>
 </li>
@@ -115,7 +122,7 @@ db_dump_yaml
 </a>
 </li>
 <li>
-<a class='' href='../aura/db_restore_.html'>
+<a class='active' href='../aura/db_restore_.html'>
 db_restore
 </a>
 </li>
