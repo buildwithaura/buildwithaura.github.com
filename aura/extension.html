@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Extension</title>
+<meta charset='UTF-8' />
+<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
+<meta content='width=device-width, initial-scale=1.0' name='viewport' />
+<link href='../style.css?1311695516' rel='stylesheet' />
+</head>
+<body>
+<div id='top'>
+<a href='../' id='logo'>
+Aura manual
+</a>
+</div>
+<div id='area'>
+<div id='content'>
+<div class='c'>
+<div id='crumbs'>
+<a href='../index.html'>Aura manual</a>
+<span class='gt'>&rarr;</span>
+<a href='../aura.html'>Aura</a>
+<span class='gt'>&rarr;</span>
+<strong>Extension</strong>
+</div>
+<hgroup>
+<h1>Extension</h1>
+<h5>Aura extensions.</h5>
+</hgroup>
+<div class='content'>
+<pre><code># [literate]
+# Lookup
+# Get an Extension instance by passing an extension name.
+ext = Aura::Extension['base']
+
+# Loading extensions
+ext.active?          #=&gt; false (probably)
+ext.load!
+ext.active?          #=&gt; true
+
+# Getting extension info
+# These are loaded from an extension's YAML file
+ext.info             #=&gt; #&lt;OStruct&gt;
+ext.info.author
+
+# Getting paths
+ext.path             #=&gt; ~/aura/extensions/base
+ext.path('init.rb')  #=&gt; ~/aura/extensions/base/init.rb
+
+# Lists of extensions
+Aura::Extension.active  # Active extensions (Array of #&lt;Extension&gt;)
+Aura::Extension.all     # All extensions (Array of #&lt;Extension&gt;)
+
+# Manual instanciation
+# Pass a path to it if you need
+ext = Aura::Extension.new('/path/to/ext')
+</code></pre>
+
+<h3>Class methods</h3>
+<ul class='section'>
+<li>
+<a href='../aura/extension/active_.html'>active</a>
+<span class='brief'>Returns all the extensions that are loaded in the config.</span>
+</li>
+<li>
+<a href='../aura/extension/active_names_.html'>active_names</a>
+<span class='brief'>Returns all names of the extensions that are loaded in the config.</span>
+</li>
+<li>
+<a href='../aura/extension/all_.html'>all</a>
+<span class='brief'>Returns all extensions (not just the ones loaded).</span>
+</li>
+</ul>
+<h3>Methods</h3>
+<ul class='section'>
+<li>
+<a href='../aura/extension/active_question_.html'>active?</a>
+<span class='brief'>Determines if the given extension is currently active in the config.</span>
+</li>
+<li>
+<a href='../aura/extension/info_.html'>info</a>
+<span class='brief'>Returns an OpenStruct of information on the extension.</span>
+</li>
+<li>
+<a href='../aura/extension/load_bang_.html'>load!</a>
+<span class='brief'>Loads an extension.</span>
+</li>
+</ul>
+<h3>Mehtods</h3>
+<ul class='section'>
+<li>
+<a href='../aura/extension/path_.html'>path</a>
+<span class='brief'>Returns the path of the extension.</span>
+</li>
+</ul>
+</div>
+</div>
+<nav id='nav'>
+<nav class='parents'>
+<ul>
+<li>
+<a href='../index.html'>
+<span class='back'>&lsaquo;</span>
+<em></em>
+Aura manual
+</a>
+</li>
+<li>
+<a href='../aura.html'>
+<span class='back'>&lsaquo;</span>
+<em>class</em>
+Aura
+</a>
+</li>
+<li>
+<a class='active' href='../aura/extension.html'>
+<em>class</em>
+Extension
+</a>
+</li>
+</ul>
+</nav>
+<nav>
+<h4>Class methods</h4>
+<ul>
+<li>
+<a class='' href='../aura/extension/active_.html'>
+active
+</a>
+</li>
+<li>
+<a class='' href='../aura/extension/active_names_.html'>
+active_names
+</a>
+</li>
+<li>
+<a class='' href='../aura/extension/all_.html'>
+all
+</a>
+</li>
+</ul>
+</nav>
+<nav>
+<h4>Methods</h4>
+<ul>
+<li>
+<a class='' href='../aura/extension/active_question_.html'>
+active?
+</a>
+</li>
+<li>
+<a class='' href='../aura/extension/info_.html'>
+info
+</a>
+</li>
+<li>
+<a class='' href='../aura/extension/load_bang_.html'>
+load!
+</a>
+</li>
+</ul>
+</nav>
+<nav>
+<h4>Mehtods</h4>
+<ul>
+<li>
+<a class='' href='../aura/extension/path_.html'>
+path
+</a>
+</li>
+</ul>
+</nav>
+</nav>
+</div>
+</div>
+<script src='http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js' type='text/javascript'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+<script src='../proscribe.js?1311695516' type='text/javascript'></script>
+</body>
+</html>
