@@ -5,10 +5,10 @@
 <meta charset='UTF-8' />
 <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
 <meta content='width=device-width, initial-scale=1.0' name='viewport' />
-<link href='./style.css?1311703976' rel='stylesheet' />
+<link href='./style.css?1311705595' rel='stylesheet' />
 <script src='http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js' type='text/javascript'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
-<script src='./proscribe.js?1311703976' type='text/javascript'></script>
+<script src='./proscribe.js?1311705595' type='text/javascript'></script>
 </head>
 <body>
 <div id='top'>
@@ -28,49 +28,11 @@ Aura manual
 <h1>Recipes</h1>
 </hgroup>
 <div class='content'>
-<h2>Creating extensions</h2>
+<h2>Creating custom page types</h2>
 
-<p>(See {file:Extensions.md Extensions} for more info.)</p>
+<h4>Use subtype</h4>
 
-<p>Step 1: Make the folder <code>extensions/my_extension/</code>. All of these files and
-folders are optional.</p>
-
-<pre><code>./
-`- extensions/
-   `- my_extension/
-      |
-      |- info.yml           - Description of the extension
-      |- init.rb            - The main file to be loaded
-      |
-      |- models/            - Models (all files auto loaded)
-      |- helpers/           - Helpers (Auto-loaded)
-      |- routes/            - Routes  (Auto-loaded)
-      |
-      |- views/             - HAML's and stuff
-      |  `- css/            - CSS (any `foo.scss` here will be accessible 
-      |                            as `yoursite.com/css/foo.css`)
-      |
-      `- public/            - Everything here will be accessible
-</code></pre>
-
-<p>Step 2: Add the extension to <code>config/extensions.rb</code> under
-<code>additional_extensions</code>.  If this file doesn't exist, copy it from
-<code>config/defaults/</code>.</p>
-
-<h1>Creating a theme</h1>
-
-<p>A theme is just an extension.</p>
-
-<ul>
-<li>Make an extension that has a <code>mytheme/views/</code> folder</li>
-<li>Make up a <code>mytheme/views/layout.haml</code></li>
-<li>Override the look of a page in <code>mytheme/views/base/default.haml</code></li>
-<li>Put public stuff (images et al) in <code>mytheme/public/</code></li>
-<li>Put CSS files in <code>mytheme/views/css/</code></li>
-</ul>
-
-
-<h1>Creating custom page types</h1>
+<p>In your model:</p>
 
 <pre><code>class Aura::Models::Page
   subtype :portfolio,
@@ -81,100 +43,64 @@ folders are optional.</p>
 
   form :portfolio do
     text :excerpt, "Portfolio excerpt"
-    end
+  end
 end
 </code></pre>
 
-<h1>Adding something to the admin sidebar</h1>
+<h2>Adding something to the admin sidebar</h2>
+
+<h4>Adding models</h4>
 
 <p>If it's a model you want on there:</p>
 
-<p>   class Aura::Models::MyModel</p>
-
-<pre><code> def self.show_on_sidebar?; true; end
+<pre><code>class Aura::Models::MyModel
+  def self.show_on_sidebar?; true; end
+end
 </code></pre>
 
-<p>   end</p>
+<h4>The rest</h4>
 
-<p>Something else:</p>
+<p>For anything else, put this in your app's initializers. (See {Aura::Menu} for more info)</p>
 
-<p>   # extensions/my_extension/init.rb
-   Aura::Admin.menu.add "id",</p>
-
-<pre><code> :name =&gt; "My menu entry",
- :href =&gt; '/admin/foo',
- :icon =&gt; 'settings'
+<pre><code>[app/init/menu.rb (ruby)]
+Aura::Admin.menu.add "id",
+  :name =&gt; "My menu entry",
+  :href =&gt; '/admin/foo',
+  :icon =&gt; 'settings'
 </code></pre>
 
+<h3></h3>
+<ul class='section'>
+<li>
+<a href='./recipes/creating_themes.html'>Creating themes</a>
+</li>
+</ul>
 </div>
 </div>
 <nav id='nav'>
-<nav>
-<h4>Classes</h4>
+<nav class='parents'>
 <ul>
 <li>
-<a class='more' href='./aura.html'>
-Aura
-</a>
-</li>
-</ul>
-</nav>
-<nav>
-<h4>Sequel plugins</h4>
-<ul>
-<li>
-<a class='' href='./auraeditable.html'>
-AuraEditable
-</a>
-</li>
-<li>
-<a class='' href='./aurahierarchy.html'>
-AuraHierarchy
-</a>
-</li>
-<li>
-<a class='more' href='./auramodel.html'>
-AuraModel
-</a>
-</li>
-<li>
-<a class='more' href='./aurasluggable.html'>
-AuraSluggable
-</a>
-</li>
-</ul>
-</nav>
-<nav>
-<h4>Sections</h4>
-<ul>
-<li>
-<a class='' href='./configuration.html'>
-Configuration
-</a>
-</li>
-<li>
-<a class='' href='./extensions.html'>
-Extensions
-</a>
-</li>
-<li>
-<a class='more' href='./helpers.html'>
-Helpers
-</a>
-</li>
-<li>
-<a class='' href='./models.html'>
-Models
+<a href='./index.html'>
+<span class='back'>&lsaquo;</span>
+<em></em>
+Aura manual
 </a>
 </li>
 <li>
 <a class='active' href='./recipes.html'>
+<em>section</em>
 Recipes
 </a>
 </li>
+</ul>
+</nav>
+<nav>
+<h4>Recipes</h4>
+<ul>
 <li>
-<a class='' href='./views.html'>
-Views
+<a class='' href='./recipes/creating_themes.html'>
+Creating themes
 </a>
 </li>
 </ul>

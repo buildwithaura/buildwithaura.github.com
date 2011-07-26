@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<title>Tasks</title>
+<title>Creating themes</title>
 <meta charset='UTF-8' />
 <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
 <meta content='width=device-width, initial-scale=1.0' name='viewport' />
@@ -22,31 +22,25 @@ Aura manual
 <div id='crumbs'>
 <a href='../index.html'>Aura manual</a>
 <span class='gt'>&rarr;</span>
-<a href='../aura.html'>Aura</a>
+<a href='../recipes.html'>Recipes</a>
 <span class='gt'>&rarr;</span>
-<strong>Tasks</strong>
+<strong>Creating themes</strong>
 </div>
 <hgroup>
-<h1>Tasks</h1>
-<h5>Rake tasks loader.</h5>
+<h1>Creating themes</h1>
 </hgroup>
 <div class='content'>
-<h4>Loading Rake tasks</h4>
+<p>A theme is just an extension.</p>
 
-<p>Put <a href="../aura/tasks/load_bang_.html">load!</a> <span class='context'>(Aura::Tasks)</span> in your project's <code>Rakefile</code>.</p>
-
-<pre><code># [Rakefile (ruby)]
-require 'aura'
-Aura::Tasks.load!
-</code></pre>
-
-<h3>Class methods</h3>
-<ul class='section'>
-<li>
-<a href='../aura/tasks/load_bang_.html'>load!</a>
-<span class='brief'>Loads rake tasks.</span>
-</li>
+<ul>
+<li>Make an extension that has a <code>mytheme/views/</code> folder</li>
+<li>Make up a <code>mytheme/views/layout.haml</code></li>
+<li>Override the look of a page in <code>mytheme/views/base/default.haml</code></li>
+<li>Put public stuff (images et al) in <code>mytheme/public/</code></li>
+<li>Put CSS files in <code>mytheme/views/css/</code></li>
 </ul>
+
+
 </div>
 </div>
 <nav id='nav'>
@@ -60,26 +54,20 @@ Aura manual
 </a>
 </li>
 <li>
-<a href='../aura.html'>
+<a href='../recipes.html'>
 <span class='back'>&lsaquo;</span>
-<em>class</em>
-Aura
-</a>
-</li>
-<li>
-<a class='active' href='../aura/tasks.html'>
-<em>module</em>
-Tasks
+<em>section</em>
+Recipes
 </a>
 </li>
 </ul>
 </nav>
 <nav>
-<h4>Class methods</h4>
+<h4>Recipes</h4>
 <ul>
 <li>
-<a class='' href='../aura/tasks/load_bang_.html'>
-load!
+<a class='active' href='../recipes/creating_themes.html'>
+Creating themes
 </a>
 </li>
 </ul>
