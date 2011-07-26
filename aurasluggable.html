@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<title>Aura</title>
+<title>AuraSluggable</title>
 <meta charset='UTF-8' />
 <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
 <meta content='width=device-width, initial-scale=1.0' name='viewport' />
@@ -22,39 +22,47 @@ Aura manual
 <div id='crumbs'>
 <a href='./index.html'>Aura manual</a>
 <span class='gt'>&rarr;</span>
-<strong>Aura</strong>
+<strong>AuraSluggable</strong>
 </div>
 <hgroup>
-<h1>Aura</h1>
-<h5>The main class.</h5>
+<h1>AuraSluggable</h1>
+<h5>Implemented for models that are to be accessible via a slug URL.</h5>
 </hgroup>
 <div class='content'>
+<h2>Description</h2>
 
+<p>   This automatically gives models the ability to be accessed via a
+   slug URL (like <code>/products/boots</code>).</p>
 
-<h3>Classes</h3>
+<p>   Your schema must have <code>String :slug</code> for this to work.</p>
+
+<h4>How to use</h4>
+
+<p>Use <code>plugin :aura_sluggable</code>.</p>
+
+<pre><code>module Aura::Models
+  class Book &lt; Model
+    plugin :aura_sluggable
+  end
+end
+</code></pre>
+
+<h3>Class methods</h3>
 <ul class='section'>
 <li>
-<a href='./aura/extension.html'>Extension</a>
-<span class='brief'>A class representing an extension in Aura.</span>
-</li>
-<li>
-<a href='./aura/menu.html'>Menu</a>
-<span class='brief'>A menu.</span>
-</li>
-<li>
-<a href='./aura/menuitem.html'>MenuItem</a>
-<span class='brief'>A menu item.</span>
+<a href='./aurasluggable/get_by_slug_.html'>get_by_slug</a>
+<span class='brief'>Finds an item by a given slug.</span>
 </li>
 </ul>
-<h3>Modules</h3>
+<h3>Methods</h3>
 <ul class='section'>
 <li>
-<a href='./aura/models.html'>Models</a>
-<span class='brief'>The namespace for models.</span>
+<a href='./aurasluggable/path_.html'>path</a>
+<span class='brief'>Returns the URL path.</span>
 </li>
 <li>
-<a href='./aura/tasks.html'>Tasks</a>
-<span class='brief'>Rake tasks loader.</span>
+<a href='./aurasluggable/slugify_.html'>slugify</a>
+<span class='brief'>Returns a unique slug for the item.</span>
 </li>
 </ul>
 </div>
@@ -70,44 +78,34 @@ Aura manual
 </a>
 </li>
 <li>
-<a class='active' href='./aura.html'>
-<em>class</em>
-Aura
+<a class='active' href='./aurasluggable.html'>
+<em>sequel plugin</em>
+AuraSluggable
 </a>
 </li>
 </ul>
 </nav>
 <nav>
-<h4>Classes</h4>
+<h4>Class methods</h4>
 <ul>
 <li>
-<a class='more' href='./aura/extension.html'>
-Extension
-</a>
-</li>
-<li>
-<a class='more' href='./aura/menu.html'>
-Menu
-</a>
-</li>
-<li>
-<a class='' href='./aura/menuitem.html'>
-MenuItem
+<a class='' href='./aurasluggable/get_by_slug_.html'>
+get_by_slug
 </a>
 </li>
 </ul>
 </nav>
 <nav>
-<h4>Modules</h4>
+<h4>Methods</h4>
 <ul>
 <li>
-<a class='more' href='./aura/models.html'>
-Models
+<a class='' href='./aurasluggable/path_.html'>
+path
 </a>
 </li>
 <li>
-<a class='more' href='./aura/tasks.html'>
-Tasks
+<a class='' href='./aurasluggable/slugify_.html'>
+slugify
 </a>
 </li>
 </ul>

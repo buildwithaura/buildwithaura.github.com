@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<title>active_names</title>
+<title>Model</title>
 <meta charset='UTF-8' />
 <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
 <meta content='width=device-width, initial-scale=1.0' name='viewport' />
@@ -24,18 +24,43 @@ Aura manual
 <span class='gt'>&rarr;</span>
 <a href='../../aura.html'>Aura</a>
 <span class='gt'>&rarr;</span>
-<a href='../../aura/extension.html'>Extension</a>
+<a href='../../aura/models.html'>Models</a>
 <span class='gt'>&rarr;</span>
-<strong>active_names</strong>
+<strong>Model</strong>
 </div>
 <hgroup>
-<h1>active_names</h1>
-<h5>Returns all names of the extensions that are loaded in the config.</h5>
+<h1>Model</h1>
+<h5>A class that represents a record type.</h5>
 </hgroup>
 <div class='content'>
+<h4>Creating a model</h4>
+
+<p>Subclass <a href="../../aura/models/model.html">Model</a> <span class='context'>(Aura::Models)</span> in the <em>Aura::Models</em> namespace.</p>
+
+<pre><code>module Aura::Models
+  class Movie &lt; Model
+    # ...
+  end
+end
+</code></pre>
+
+<h4>Setting up auto-migration</h4>
+
+<p>Use Sequel's <code>set_schema</code>. Schemas defined this way will have it's tables automatically created.</p>
+
+<pre><code>class Movie &lt; Model
+  set_schema do
+    primary_key :id
+
+    String :name
+    String :description
+  end
+end
+</code></pre>
+
 <h2>Description</h2>
 
-<p>   Returns an array of strings.</p>
+<p>   Inherits from <a href="../../auramodel.html">AuraModel</a>.</p>
 
 </div>
 </div>
@@ -57,10 +82,20 @@ Aura
 </a>
 </li>
 <li>
-<a href='../../aura/extension.html'>
+<a href='../../aura/models.html'>
 <span class='back'>&lsaquo;</span>
-<em>class</em>
-Extension
+<em>module</em>
+Models
+</a>
+</li>
+</ul>
+</nav>
+<nav>
+<h4>Classes</h4>
+<ul>
+<li>
+<a class='active' href='../../aura/models/model.html'>
+Model
 </a>
 </li>
 </ul>
@@ -69,43 +104,13 @@ Extension
 <h4>Class methods</h4>
 <ul>
 <li>
-<a class='' href='../../aura/extension/active_.html'>
-active
-</a>
-</li>
-<li>
-<a class='active' href='../../aura/extension/active_names_.html'>
-active_names
-</a>
-</li>
-<li>
-<a class='' href='../../aura/extension/all_.html'>
+<a class='' href='../../aura/models/all_.html'>
 all
 </a>
 </li>
-</ul>
-</nav>
-<nav>
-<h4>Methods</h4>
-<ul>
 <li>
-<a class='' href='../../aura/extension/active_question_.html'>
-active?
-</a>
-</li>
-<li>
-<a class='' href='../../aura/extension/info_.html'>
-info
-</a>
-</li>
-<li>
-<a class='' href='../../aura/extension/load_bang_.html'>
-load!
-</a>
-</li>
-<li>
-<a class='' href='../../aura/extension/path_.html'>
-path
+<a class='' href='../../aura/models/get_.html'>
+get
 </a>
 </li>
 </ul>

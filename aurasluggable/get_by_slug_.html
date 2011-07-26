@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<title>show_admin</title>
+<title>get_by_slug</title>
 <meta charset='UTF-8' />
 <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
 <meta content='width=device-width, initial-scale=1.0' name='viewport' />
@@ -22,16 +22,19 @@ Aura manual
 <div id='crumbs'>
 <a href='../index.html'>Aura manual</a>
 <span class='gt'>&rarr;</span>
-<a href='../helpers.html'>Helpers</a>
+<a href='../aurasluggable.html'>AuraSluggable</a>
 <span class='gt'>&rarr;</span>
-<strong>show_admin</strong>
+<strong>get_by_slug</strong>
 </div>
 <hgroup>
-<h1>show_admin</h1>
-<h5>Renders an admin page with the admin template.</h5>
+<h1>get_by_slug</h1>
+<h5>Finds an item by a given slug.</h5>
 </hgroup>
 <div class='content'>
+<h2>Example</h2>
 
+<pre><code>b = Book.get_by_slug('darkly-dreaming-dexter')
+</code></pre>
 
 </div>
 </div>
@@ -46,30 +49,35 @@ Aura manual
 </a>
 </li>
 <li>
-<a href='../helpers.html'>
+<a href='../aurasluggable.html'>
 <span class='back'>&lsaquo;</span>
-<em>section</em>
-Helpers
+<em>sequel plugin</em>
+AuraSluggable
 </a>
 </li>
 </ul>
 </nav>
 <nav>
-<h4>Admin helpers</h4>
+<h4>Class methods</h4>
 <ul>
 <li>
-<a class='' href='../helpers/admin_back_to_dashboard_.html'>
-admin_back_to_dashboard
+<a class='active' href='../aurasluggable/get_by_slug_.html'>
+get_by_slug
+</a>
+</li>
+</ul>
+</nav>
+<nav>
+<h4>Methods</h4>
+<ul>
+<li>
+<a class='' href='../aurasluggable/path_.html'>
+path
 </a>
 </li>
 <li>
-<a class='' href='../helpers/admin_icon_.html'>
-admin_icon
-</a>
-</li>
-<li>
-<a class='active' href='../helpers/show_admin_.html'>
-show_admin
+<a class='' href='../aurasluggable/slugify_.html'>
+slugify
 </a>
 </li>
 </ul>

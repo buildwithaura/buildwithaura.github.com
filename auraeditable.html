@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<title>Models</title>
+<title>AuraEditable</title>
 <meta charset='UTF-8' />
 <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
 <meta content='width=device-width, initial-scale=1.0' name='viewport' />
@@ -22,72 +22,24 @@ Aura manual
 <div id='crumbs'>
 <a href='./index.html'>Aura manual</a>
 <span class='gt'>&rarr;</span>
-<strong>Models</strong>
+<strong>AuraEditable</strong>
 </div>
 <hgroup>
-<h1>Models</h1>
+<h1>AuraEditable</h1>
+<h5>For things that you can edit in the admin panel.</h5>
 </hgroup>
 <div class='content'>
 <h2>Description</h2>
 
-<p>All models are Sequel models. It uses the Sequel plugin system.</p>
+<p>   Use this plugin in you want your model editable.</p>
 
-<h4>Creating a model</h4>
+<h4>How to use</h4>
 
-<p>Subclass {Aura::Models::Model} in the <em>Aura::Models</em> namespace.</p>
+<p>Use <code>plugin :aura_editable</code>.</p>
 
-<pre><code>[app/models/movie.rb (ruby)]
-module Aura::Models
-  class Movie &lt; Model
-    # ...
-  end
-end
-</code></pre>
-
-<h4>Setting up auto-migration</h4>
-
-<p>Use Sequel's <code>set_schema</code>. Schemas defined this way will have it's tables automatically created.</p>
-
-<pre><code>[app/models/movie.rb (ruby)]
-class Movie &lt; Model
-  set_schema do
-    primary_key :id
-
-    String :name
-    String :description
-  end
-
-  # ...
-end
-</code></pre>
-
-<h4>Setting up plugins</h4>
-
-<pre><code>[app/models/movie.rb (ruby)]
-class Movie &lt; Model
-  plugin :aura_editable
-  plugin :aura_sluggable
-end
-</code></pre>
-
-<h2>Example</h2>
-
-<p>In your extension, create a model file like so.</p>
-
-<pre><code># extensions/myext/models/post.rb
-class Aura
-  module Models
-    class Post &lt; Model
-
-      # put guts here
-      # for example:
-
-      plugin :aura_editable
-      plugin :aura_sluggable
-
-      def shown_in_menu?() true; end
-
-    end
+<pre><code>module Aura::Models
+  class Book &lt; Model
+    plugin :aura_editable
   end
 end
 </code></pre>
@@ -109,7 +61,7 @@ Aura
 <h4>Sequel plugins</h4>
 <ul>
 <li>
-<a class='' href='./auraeditable.html'>
+<a class='active' href='./auraeditable.html'>
 AuraEditable
 </a>
 </li>
@@ -149,7 +101,7 @@ Helpers
 </a>
 </li>
 <li>
-<a class='active' href='./models.html'>
+<a class='' href='./models.html'>
 Models
 </a>
 </li>
