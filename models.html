@@ -5,10 +5,10 @@
 <meta charset='UTF-8' />
 <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
 <meta content='width=device-width, initial-scale=1.0' name='viewport' />
-<link href='./style.css?1311734057' rel='stylesheet' />
+<link href='./style.css?1311739658' rel='stylesheet' />
 <script src='http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js' type='text/javascript'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
-<script src='./proscribe.js?1311734057' type='text/javascript'></script>
+<script src='./proscribe.js?1311739658' type='text/javascript'></script>
 </head>
 <body>
 <div id='top'>
@@ -32,13 +32,11 @@ Aura manual
 
 <h4>Creating a model</h4>
 
-<p>Subclass {Aura::Models::Model} in the <em>Aura::Models</em> namespace.</p>
+<p>Subclass <code>Sequel::Model</code>.</p>
 
 <pre><code>[app/models/movie.rb (ruby)]
-module Aura::Models
-  class Movie &lt; Model
-    # ...
-  end
+class Movie &lt; Sequel::Model
+  # ...
 end
 </code></pre>
 
@@ -68,7 +66,7 @@ end
 <p>Use Sequel's <code>plugin</code> class method.</p>
 
 <pre><code>[app/models/movie.rb (ruby)]
-class Movie &lt; Model
+class Movie &lt; Sequel::Model
   plugin :aura_editable
   plugin :aura_sluggable
   plugin :aura_hierarchy
@@ -80,20 +78,15 @@ end
 <p>In your extension, create a model file like so.</p>
 
 <pre><code># extensions/myext/models/post.rb
-class Aura
-  module Models
-    class Post &lt; Model
+class Post &lt; Sequel::Model
 
-      # put guts here
-      # for example:
+  # put guts here
+  # for example:
 
-      plugin :aura_editable
-      plugin :aura_sluggable
+  plugin :aura_editable
+  plugin :aura_sluggable
 
-      def shown_in_menu?() true; end
-
-    end
-  end
+  def shown_in_menu?() true; end
 end
 </code></pre>
 
@@ -106,6 +99,11 @@ end
 <li>
 <a class='more' href='./aura.html'>
 Aura
+</a>
+</li>
+<li>
+<a class='' href='./main.html'>
+Main
 </a>
 </li>
 </ul>

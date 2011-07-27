@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<title>Routes</title>
+<title>Main</title>
 <meta charset='UTF-8' />
 <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
 <meta content='width=device-width, initial-scale=1.0' name='viewport' />
@@ -22,54 +22,16 @@ Aura manual
 <div id='crumbs'>
 <a href='./index.html'>Aura manual</a>
 <span class='gt'>&rarr;</span>
-<strong>Routes</strong>
+<strong>Main</strong>
 </div>
 <hgroup>
-<h1>Routes</h1>
+<h1>Main</h1>
+<h5>The main Sinatra application.</h5>
 </hgroup>
 <div class='content'>
-<p>Routes are defined and used exactly as how you would in Sinatra.</p>
+<h2>Description</h2>
 
-<h4>Defining routes</h4>
-
-<p>Create a file in the <code>app/routes/</code> folder of your app.</p>
-
-<pre><code>[app/routes/foo.rb (rb)]
-class Main
-  get '/foo' do
-    show :foo
-  end
-end
-</code></pre>
-
-<h4>Handling 404's</h4>
-
-<p>You should use <code>pass</code> instead of <code>not_found</code>. This lets the default
-Aura routes pick it up in case it points to something else.</p>
-
-<pre><code>[app/routes/foo.rb (rb)]
-class Main
-  get '/book/:id' do |id|
-    @book = Book[id] or pass
-
-    # ...
-  end
-end
-</code></pre>
-
-<h4>Defining admin pages</h4>
-
-<p>Use the <code>show_admin</code> and <code>require_login</code> helpers.</p>
-
-<pre><code>[app/routes/foo.rb (rb)]
-class Main
-  get '/admin/something' do |id|
-    require_login
-
-    show_admin :something
-  end
-end
-</code></pre>
+<p>   This is the main application. It is also accessible as <code>Aura::App</code>.</p>
 
 </div>
 </div>
@@ -83,7 +45,7 @@ Aura
 </a>
 </li>
 <li>
-<a class='' href='./main.html'>
+<a class='active' href='./main.html'>
 Main
 </a>
 </li>
@@ -143,7 +105,7 @@ Recipes
 </a>
 </li>
 <li>
-<a class='active' href='./routes.html'>
+<a class='' href='./routes.html'>
 Routes
 </a>
 </li>
