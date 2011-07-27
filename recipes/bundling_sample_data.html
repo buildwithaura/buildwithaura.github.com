@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<title>show_admin</title>
+<title>Bundling sample data</title>
 <meta charset='UTF-8' />
 <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
 <meta content='width=device-width, initial-scale=1.0' name='viewport' />
@@ -22,16 +22,45 @@ Aura manual
 <div id='crumbs'>
 <a href='../index.html'>Aura manual</a>
 <span class='gt'>&rarr;</span>
-<a href='../helpers.html'>Helpers</a>
+<a href='../recipes.html'>Recipes</a>
 <span class='gt'>&rarr;</span>
-<strong>show_admin</strong>
+<strong>Bundling sample data</strong>
 </div>
 <hgroup>
-<h1>show_admin</h1>
-<h5>Renders an admin page with the admin template.</h5>
+<h1>Bundling sample data</h1>
 </hgroup>
 <div class='content'>
+<p>You may want to bundle some sample data with the application when you deploy.
+This may be useful when you're delivering the CMS as one self-contained
+package to your client.</p>
 
+<h4>Freeze your data</h4>
+
+<p>Assuming you have Aura working locally, freeze it using <code>rake db:dump</code>.
+This creates a <code>config/seed.yml</code> file.</p>
+
+<pre><code>$ rake db:dump
+* Working...
+* Writing to config/seed.yml...
+
+Done.
+
+...
+</code></pre>
+
+<h4>config/seed.yml</h4>
+
+<p>Be sure to add this file to your repository.</p>
+
+<pre><code>$ ls -la config/seed.yml
+-rw-r--r--   1 rsc  staff  28115 Jul 23 23:14 seed.yml
+
+$ git add config/seed.yml
+</code></pre>
+
+<p>The next time your application starts, it will rebuild the database from
+that snapshot. You can use <code>rake db:flush</code> to ensure that this will
+happen the next time the application loads.</p>
 
 </div>
 </div>
@@ -46,40 +75,30 @@ Aura manual
 </a>
 </li>
 <li>
-<a href='../helpers.html'>
+<a href='../recipes.html'>
 <span class='back'>&lsaquo;</span>
 <em>section</em>
-Helpers
+Recipes
 </a>
 </li>
 </ul>
 </nav>
 <nav>
-<h4>Admin helpers</h4>
+<h4>Recipes</h4>
 <ul>
 <li>
-<a class='' href='../helpers/admin_back_to_dashboard_.html'>
-admin_back_to_dashboard
+<a class='active' href='../recipes/bundling_sample_data.html'>
+Bundling sample data
 </a>
 </li>
 <li>
-<a class='' href='../helpers/admin_icon_.html'>
-admin_icon
+<a class='' href='../recipes/creating_themes.html'>
+Creating themes
 </a>
 </li>
 <li>
-<a class='active' href='../helpers/show_admin_.html'>
-show_admin
-</a>
-</li>
-</ul>
-</nav>
-<nav>
-<h4>Helpers</h4>
-<ul>
-<li>
-<a class='' href='../helpers/html_.html'>
-html
+<a class='' href='../recipes/using_markdown_or_textile.html'>
+Using Markdown or Textile
 </a>
 </li>
 </ul>
