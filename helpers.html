@@ -5,10 +5,10 @@
 <meta charset='UTF-8' />
 <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
 <meta content='width=device-width, initial-scale=1.0' name='viewport' />
-<link href='./style.css?1311727321' rel='stylesheet' />
+<link href='./style.css?1311733162' rel='stylesheet' />
 <script src='http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js' type='text/javascript'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
-<script src='./proscribe.js?1311727321' type='text/javascript'></script>
+<script src='./proscribe.js?1311733162' type='text/javascript'></script>
 </head>
 <body>
 <div id='top'>
@@ -41,15 +41,111 @@ Aura manual
 <span class='brief'>Draws an img tag of the given icon.</span>
 </li>
 <li>
+<a href='./helpers/admin_watermark_.html'>admin_watermark</a>
+<span class='brief'>Shows the link to the admin page from the public site.</span>
+</li>
+<li>
 <a href='./helpers/show_admin_.html'>show_admin</a>
 <span class='brief'>Renders an admin page with the admin template.</span>
+</li>
+</ul>
+<h3>Page helpers</h3>
+<ul class='section'>
+<li>
+<a href='./helpers/body_class_.html'>body_class</a>
+<span class='brief'>Sets or gets the class for the body.</span>
+</li>
+<li>
+<a href='./helpers/link_to_.html'>link_to</a>
+<span class='brief'>Builds a link.</span>
+</li>
+<li>
+<a href='./helpers/title_.html'>title</a>
+<span class='brief'>Sets or gets the title for the page.</span>
 </li>
 </ul>
 <h3>Helpers</h3>
 <ul class='section'>
 <li>
+<a href='./helpers/checkbox_.html'>checkbox</a>
+<span class='brief'>Draws a checkbox with a hidden field.</span>
+</li>
+<li>
+<a href='./helpers/h_.html'>h</a>
+<span class='brief'>Escapes an HTML string.</span>
+</li>
+<li>
 <a href='./helpers/html_.html'>html</a>
 <span class='brief'>Sanitizes HTML with Markdown and Textile support.</span>
+</li>
+<li>
+<a href='./helpers/labeled_checkbox_.html'>labeled_checkbox</a>
+<span class='brief'>Draws a checkbox with a label.</span>
+</li>
+</ul>
+<h3>Template helpers</h3>
+<ul class='section'>
+<li>
+<a href='./helpers/content_for_bang_.html'>content_for!</a>
+<span class='brief'>Like content_for, but overwrites any blocks.</span>
+</li>
+<li>
+<a href='./helpers/content_for_question_.html'>content_for?</a>
+<span class='brief'>Synonym of has_content?</span>
+</li>
+<li>
+<a href='./helpers/has_content_question_.html'>has_content?</a>
+<span class='brief'>Checks if a given content block is defined.</span>
+</li>
+<li>
+<a href='./helpers/partial_.html'>partial</a>
+<span class='brief'>Renders a partial.</span>
+</li>
+<li>
+<a href='./helpers/yield_content_of_.html'>yield_content_of</a>
+<span class='brief'>Loads a given template and yields a certain content block of it.</span>
+</li>
+</ul>
+<h3>User helperses</h3>
+<ul class='section'>
+<li>
+<a href='./helpers/current_user_.html'>current_user</a>
+<span class='brief'>Returns the current user as an instance of {Aura::Models::User}.</span>
+</li>
+<li>
+<a href='./helpers/logged_in_question_.html'>logged_in?</a>
+<span class='brief'>Checks if there is a user logged in or not.</span>
+</li>
+<li>
+<a href='./helpers/require_login_.html'>require_login</a>
+<span class='brief'>Ensures that a route is only accessible to logged in users.</span>
+</li>
+</ul>
+<h3>Flash helpers</h3>
+<ul class='section'>
+<li>
+<a href='./helpers/flash_error_.html'>flash_error</a>
+<span class='brief'>Flashes an error.</span>
+</li>
+<li>
+<a href='./helpers/flash_errors_.html'>flash_errors</a>
+<span class='brief'>Returns a list of errors to flash.</span>
+</li>
+<li>
+<a href='./helpers/flash_errors_question_.html'>flash_errors?</a>
+<span class='brief'>Checks if there are errors to flash.</span>
+</li>
+<li>
+<a href='./helpers/flash_message_.html'>flash_message</a>
+<span class='brief'>Flashes a message.</span>
+</li>
+<li>
+<a href='./helpers/flash_messages_.html'>flash_messages</a>
+<span class='brief'>Returns a list of messages to flash.</span>
+</li>
+<li>
+<a href='./helpers/flash_messages_question_.html'>flash_messages?</a>
+<span class='brief'>Checks if there are messages to flash.</span>
 </li>
 </ul>
 </div>
@@ -86,8 +182,33 @@ admin_icon
 </a>
 </li>
 <li>
+<a class='' href='./helpers/admin_watermark_.html'>
+admin_watermark
+</a>
+</li>
+<li>
 <a class='' href='./helpers/show_admin_.html'>
 show_admin
+</a>
+</li>
+</ul>
+</nav>
+<nav>
+<h4>Page helpers</h4>
+<ul>
+<li>
+<a class='' href='./helpers/body_class_.html'>
+body_class
+</a>
+</li>
+<li>
+<a class='' href='./helpers/link_to_.html'>
+link_to
+</a>
+</li>
+<li>
+<a class='' href='./helpers/title_.html'>
+title
 </a>
 </li>
 </ul>
@@ -96,8 +217,108 @@ show_admin
 <h4>Helpers</h4>
 <ul>
 <li>
+<a class='' href='./helpers/checkbox_.html'>
+checkbox
+</a>
+</li>
+<li>
+<a class='' href='./helpers/h_.html'>
+h
+</a>
+</li>
+<li>
 <a class='' href='./helpers/html_.html'>
 html
+</a>
+</li>
+<li>
+<a class='' href='./helpers/labeled_checkbox_.html'>
+labeled_checkbox
+</a>
+</li>
+</ul>
+</nav>
+<nav>
+<h4>Template helpers</h4>
+<ul>
+<li>
+<a class='' href='./helpers/content_for_bang_.html'>
+content_for!
+</a>
+</li>
+<li>
+<a class='' href='./helpers/content_for_question_.html'>
+content_for?
+</a>
+</li>
+<li>
+<a class='' href='./helpers/has_content_question_.html'>
+has_content?
+</a>
+</li>
+<li>
+<a class='' href='./helpers/partial_.html'>
+partial
+</a>
+</li>
+<li>
+<a class='' href='./helpers/yield_content_of_.html'>
+yield_content_of
+</a>
+</li>
+</ul>
+</nav>
+<nav>
+<h4>User helperses</h4>
+<ul>
+<li>
+<a class='' href='./helpers/current_user_.html'>
+current_user
+</a>
+</li>
+<li>
+<a class='' href='./helpers/logged_in_question_.html'>
+logged_in?
+</a>
+</li>
+<li>
+<a class='' href='./helpers/require_login_.html'>
+require_login
+</a>
+</li>
+</ul>
+</nav>
+<nav>
+<h4>Flash helpers</h4>
+<ul>
+<li>
+<a class='' href='./helpers/flash_error_.html'>
+flash_error
+</a>
+</li>
+<li>
+<a class='' href='./helpers/flash_errors_.html'>
+flash_errors
+</a>
+</li>
+<li>
+<a class='' href='./helpers/flash_errors_question_.html'>
+flash_errors?
+</a>
+</li>
+<li>
+<a class='' href='./helpers/flash_message_.html'>
+flash_message
+</a>
+</li>
+<li>
+<a class='' href='./helpers/flash_messages_.html'>
+flash_messages
+</a>
+</li>
+<li>
+<a class='' href='./helpers/flash_messages_question_.html'>
+flash_messages?
 </a>
 </li>
 </ul>
