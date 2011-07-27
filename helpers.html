@@ -5,10 +5,10 @@
 <meta charset='UTF-8' />
 <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
 <meta content='width=device-width, initial-scale=1.0' name='viewport' />
-<link href='./style.css?1311733162' rel='stylesheet' />
+<link href='./style.css?1311734057' rel='stylesheet' />
 <script src='http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js' type='text/javascript'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
-<script src='./proscribe.js?1311733162' type='text/javascript'></script>
+<script src='./proscribe.js?1311734057' type='text/javascript'></script>
 </head>
 <body>
 <div id='top'>
@@ -28,7 +28,48 @@ Aura manual
 <h1>Helpers</h1>
 </hgroup>
 <div class='content'>
+<p>Helpers are defined and used exactly as how you would in Sinatra.</p>
 
+<h4>Defining helpers</h4>
+
+<p>Create a file in the <code>app/helpers/</code> folder of your app.</p>
+
+<pre><code>[app/helpers/my_helpers.rb (rb)]
+class Main
+  module MyHelpers
+    def who_is_awesome
+      "You are!"
+    end
+  end
+
+  helpers MyHelpers
+end
+</code></pre>
+
+<h4>Using helpers in views</h4>
+
+<p>You can then use it in views.</p>
+
+<pre><code>[app/views/index.haml (haml)]
+%div.question
+  Who is awesome?
+
+%div.answer
+  = who_is_awesome
+</code></pre>
+
+<h4>Using helpers in routes</h4>
+
+<p>Yeah, you can.</p>
+
+<pre><code>[app/routes/foo.rb (rb)]
+class Main
+  get '/who_is_awesome' do
+    @who = who_is_awesome
+    show :index
+  end
+end
+</code></pre>
 
 <h3>Admin helpers</h3>
 <ul class='section'>
@@ -106,7 +147,7 @@ Aura manual
 <span class='brief'>Loads a given template and yields a certain content block of it.</span>
 </li>
 </ul>
-<h3>User helperses</h3>
+<h3>User helpers</h3>
 <ul class='section'>
 <li>
 <a href='./helpers/current_user_.html'>current_user</a>
@@ -269,7 +310,7 @@ yield_content_of
 </ul>
 </nav>
 <nav>
-<h4>User helperses</h4>
+<h4>User helpers</h4>
 <ul>
 <li>
 <a class='' href='./helpers/current_user_.html'>

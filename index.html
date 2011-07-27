@@ -5,10 +5,10 @@
 <meta charset='UTF-8' />
 <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
 <meta content='width=device-width, initial-scale=1.0' name='viewport' />
-<link href='./style.css?1311733162' rel='stylesheet' />
+<link href='./style.css?1311734057' rel='stylesheet' />
 <script src='http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js' type='text/javascript'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
-<script src='./proscribe.js?1311733162' type='text/javascript'></script>
+<script src='./proscribe.js?1311734057' type='text/javascript'></script>
 </head>
 <body>
 <div id='top'>
@@ -60,6 +60,16 @@ $ aura
 <pre><code>$ cd myproject/
 $ bundle install
   ...
+</code></pre>
+
+<h4>Configure a database (optional)</h4>
+
+<p>Sequel uses Sqlite by default. To point it to another database, edit the <code>config/database.rb.example</code> file.</p>
+
+<pre><code>[config/database.rb (rb)]
+Main.configure do |m|
+  m.set :database_url, "mysql://root:pickles@localhost/db_name"
+end
 </code></pre>
 
 <h4>Start it up</h4>
@@ -145,6 +155,9 @@ $ bundle install
 <a href='./recipes.html'>Recipes</a>
 </li>
 <li>
+<a href='./routes.html'>Routes</a>
+</li>
+<li>
 <a href='./views.html'>Views</a>
 </li>
 </ul>
@@ -212,6 +225,11 @@ Models
 <li>
 <a class='more' href='./recipes.html'>
 Recipes
+</a>
+</li>
+<li>
+<a class='' href='./routes.html'>
+Routes
 </a>
 </li>
 <li>

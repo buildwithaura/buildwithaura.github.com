@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<title>Models</title>
+<title>Routes</title>
 <meta charset='UTF-8' />
 <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
 <meta content='width=device-width, initial-scale=1.0' name='viewport' />
@@ -22,77 +22,51 @@ Aura manual
 <div id='crumbs'>
 <a href='./index.html'>Aura manual</a>
 <span class='gt'>&rarr;</span>
-<strong>Models</strong>
+<strong>Routes</strong>
 </div>
 <hgroup>
-<h1>Models</h1>
+<h1>Routes</h1>
 </hgroup>
 <div class='content'>
-<p>All models are Sequel models. Aura also uses the Sequel plugin system.</p>
+<p>Routes are defined and used exactly as how you would in Sinatra.</p>
 
-<h4>Creating a model</h4>
+<h4>Defining routes</h4>
 
-<p>Subclass {Aura::Models::Model} in the <em>Aura::Models</em> namespace.</p>
+<p>Create a file in the <code>app/routes/</code> folder of your app.</p>
 
-<pre><code>[app/models/movie.rb (ruby)]
-module Aura::Models
-  class Movie &lt; Model
+<pre><code>[app/routes/foo.rb (rb)]
+class Main
+  get '/foo' do
+    show :foo
+  end
+end
+</code></pre>
+
+<h4>Handling 404's</h4>
+
+<p>You should use <code>pass</code> instead of <code>not_found</code>. This lets the default
+Aura routes pick it up in case it points to something else.</p>
+
+<pre><code>[app/routes/foo.rb (rb)]
+class Main
+  get '/book/:id' do |id|
+    @book = Book[id] or pass
+
     # ...
   end
 end
 </code></pre>
 
-<h4>Setting up migrations</h4>
+<h4>Defining admin pages</h4>
 
-<p>Migrations are defined in <code>app/migrations/</code>. Use
-<a href="http://github.com/rtomayko/sinatra-sequel">Sinatra-Sequel</a>'s <code>migration</code>
-method in your migrations files.</p>
+<p>Use the <code>show_admin</code> and <code>require_login</code> helpers.</p>
 
-<pre><code>[app/migrations/movie.rb (ruby)]
+<pre><code>[app/routes/foo.rb (rb)]
 class Main
-  migration "foo v0.0.1 - create" do
-    database.create_table do
-      primary_key :id
+  get '/admin/something' do |id|
+    require_login
 
-      String :name
-      String :description
-
-      # ...
-    end
-  end
-end
-</code></pre>
-
-<h4>Setting up plugins</h4>
-
-<p>Use Sequel's <code>plugin</code> class method.</p>
-
-<pre><code>[app/models/movie.rb (ruby)]
-class Movie &lt; Model
-  plugin :aura_editable
-  plugin :aura_sluggable
-  plugin :aura_hierarchy
-end
-</code></pre>
-
-<h2>Example</h2>
-
-<p>In your extension, create a model file like so.</p>
-
-<pre><code># extensions/myext/models/post.rb
-class Aura
-  module Models
-    class Post &lt; Model
-
-      # put guts here
-      # for example:
-
-      plugin :aura_editable
-      plugin :aura_sluggable
-
-      def shown_in_menu?() true; end
-
-    end
+    show_admin :something
   end
 end
 </code></pre>
@@ -154,7 +128,7 @@ Helpers
 </a>
 </li>
 <li>
-<a class='active' href='./models.html'>
+<a class='' href='./models.html'>
 Models
 </a>
 </li>
@@ -164,7 +138,7 @@ Recipes
 </a>
 </li>
 <li>
-<a class='' href='./routes.html'>
+<a class='active' href='./routes.html'>
 Routes
 </a>
 </li>
