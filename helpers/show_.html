@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<title>partial</title>
+<title>show</title>
 <meta charset='UTF-8' />
 <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
 <meta content='width=device-width, initial-scale=1.0' name='viewport' />
@@ -24,28 +24,70 @@ Aura manual
 <span class='gt'>&rarr;</span>
 <a href='../helpers.html'>Helpers</a>
 <span class='gt'>&rarr;</span>
-<strong>partial</strong>
+<strong>show</strong>
 </div>
 <hgroup>
-<h1>partial</h1>
-<h5>Renders a partial.</h5>
+<h1>show</h1>
+<h5>Shows a given template.</h5>
 </hgroup>
 <div class='content'>
+<h2>Usage</h2>
 
+<pre><code>show(template[, options[, locals])
+show(model, template[, options[, locals])
+</code></pre>
+
+<h2>Options</h2>
+
+<p>  You may pass +options[:engine]+ to specify which engines you will want
+  to limit the search to. This defaults to +App.multi_engines+, or Tilt's
+  supported engines if that's not defined.</p>
+
+<p>  You may pass +options[:views]+ to specify which directories to scour.
+  This defaults to +Main.multi_views+, or +Main.views+.</p>
+
+<h4>Show a template</h4>
+
+<pre><code>show :home
+</code></pre>
+
+<h4>Show a model's view</h4>
+
+<p>This example looks at <code>:'page/index'</code> and <code>:'base/index'</code>, using
+whichever it finds first</p>
+
+<pre><code>page = Page['/about']
+show page, :index
+</code></pre>
+
+<h4>Limiting engines</h4>
+
+<pre><code># HAML only
+show :home, engine: :haml
+
+# HAML or ERB, favoring HAML first
+show :home, engine: [:haml, :erb]
+</code></pre>
+
+<h4>Only certain paths</h4>
+
+<p>Only look at certain paths</p>
+
+<p>   show :home, views: [ './views', './skins/default' ]</p>
 
 <section class='footer'>
 <div class='left'>
 <strong>
-<a href='../helpers/partial_.html'>
+<a href='../helpers/show_.html'>
 Helpers
 </a>
 <span class='arrow'>&rsaquo;</span>
-partial
-<span class='type'>template helper</span>
+show
+<span class='type'>helper</span>
 </strong>
 Defined in
-<a href='https:/github.com/aura-cms/aura/blob/7f9edf5/app/helpers/template_helpers.rb#L20'>
-<span>/app/helpers/template_helpers.rb</span>
+<a href='https:/github.com/aura-cms/aura/blob/7f9edf5/lib/sinatra/support/multirender-ext.rb#L84'>
+<span>/lib/sinatra/support/multirender-ext.rb</span>
 <span class='view-source'>View source &rsaquo;</span>
 </a>
 </div>
@@ -145,7 +187,7 @@ layout
 </a>
 </li>
 <li>
-<a class='' href='../helpers/show_.html'>
+<a class='active' href='../helpers/show_.html'>
 show
 </a>
 </li>
@@ -170,7 +212,7 @@ has_content?
 </a>
 </li>
 <li>
-<a class='active' href='../helpers/partial_.html'>
+<a class='' href='../helpers/partial_.html'>
 partial
 </a>
 </li>
