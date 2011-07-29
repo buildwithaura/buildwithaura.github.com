@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<title>HashArray</title>
+<title>Theming</title>
 <meta charset='UTF-8' />
 <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
 <meta content='width=device-width, initial-scale=1.0' name='viewport' />
@@ -22,60 +22,82 @@ Aura manual
 <div id='crumbs'>
 <a href='./index.html'>Aura manual</a>
 <span class='gt'>&rarr;</span>
-<strong>HashArray</strong>
+<strong>Theming</strong>
 </div>
 <hgroup>
-<h1>HashArray</h1>
-<h5>A stopgap solution to Ruby 1.8's lack of ordered hashes.</h5>
+<h1>Theming</h1>
 </hgroup>
 <div class='content'>
-<p>A HashArray, for all intents and purposes, acts like an array. However, the
-common stuff are overloaded to work with hashes.</p>
+<h2>Themes</h2>
 
-<h2>Basic usage</h2>
+<h4>Theming</h4>
 
-<h4>Creating</h4>
+<p>Just change the views.</p>
 
-<p>You can create a HashArray by passing it an array.</p>
-
-<pre><code>dict = HashArray.new([
-  <a href="./good_morning_/gt_/bonjour.html"> :good_morning =&gt; "Bonjour" </a>,
-  <a href="./goodbye_/gt_/au/revoir_.html"> :goodbye      =&gt; "Au revoir" </a>,
-  <a href="./good_evening_/gt_/bon/nuit_.html"> :good_evening =&gt; "Bon nuit" </a>
-])
+<pre><code>$
+app/views/layout.haml
+app/views/page/show.haml
 </code></pre>
 
-<h4>Converting</h4>
+<h2>CSS</h2>
 
-<p>You may also use it like so:</p>
+<h4>Adding CSS</h4>
 
-<pre><code>letters = [ <a href="./a_/gt_/aye.html"> :a =&gt; "Aye"</a>, <a href="./b_/gt_/bee.html"> :b =&gt; "Bee" </a> ].to_hash_array
+<p>Put files in <code>app/css/</code>. You can put Sass, SCSS, Less or plain CSS files.</p>
+
+<pre><code>[app/css/main.scss (css)]
+$red: #833;
+
+#main {
+  color: $red;
+}
 </code></pre>
 
-<h4>Iterating</h4>
+<h4>Accessing them</h4>
 
-<p>Now you can use the typical enumerator functions:</p>
+<p>These files will be accessible in <code>http://localhost:4567/css</code>. For example,
+these paths may correspond to the following files.</p>
 
-<pre><code>dict.each do |(key, value)|
-  puts "#<a href="./key_.html">key</a> is #<a href="./value_.html">value</a>"
-end
+<pre><code>$ http://localhost:4567/css/screen.css
+# ~/myapp/app/css/screen.css
 
-#=&gt; :good_morning is "Bonjour"
-#   :goodbye is "Au revoir"
-#   :good_evening is "Bon nuit"
+$ http://localhost:4567/css/main.css
+# ~/myapp/app/css/main.scss (Rendered by Sass CSS)
+
+$ http://localhost:4567/css/admin/top.css
+# ~/myapp/app/css/admin/top.less (Rendered by Less)
+</code></pre>
+
+<h2>JavaScript</h2>
+
+<h4>Adding JavaScript</h4>
+
+<p>You may put files in <code>app/js/</code>. You can put CoffeeScript in here as well.</p>
+
+<pre><code>[app/js/application.js (js)]
+$(function() {
+  $("#top").show();
+});
+</code></pre>
+
+<h4>Accessing them</h4>
+
+<p>These files will be accessible in <code>http://localhost:4567/js</code>. For example,
+these paths may correspond to the following files.</p>
+
+<pre><code>$ http://localhost:4567/js/prototype.js
+# ~/myapp/app/js/prototype.js
+
+$ http://localhost:4567/js/main.js
+# ~/myapp/app/js/main.coffee (Rendered by CoffeeScript)
 </code></pre>
 
 <section class='footer'>
 <div class='left'>
 <strong>
-HashArray
-<span class='type'>class</span>
+Theming
+<span class='type'>section</span>
 </strong>
-Defined in
-<a href='https:/github.com/aura-cms/aura/blob/82ad2eb/lib/core/hasharray.rb#L34'>
-<span>/lib/core/hasharray.rb</span>
-<span class='view-source'>View source &rsaquo;</span>
-</a>
 </div>
 </section>
 </div>
@@ -90,7 +112,7 @@ Aura
 </a>
 </li>
 <li>
-<a class='active' href='./hasharray.html'>
+<a class='' href='./hasharray.html'>
 HashArray
 </a>
 </li>
@@ -165,7 +187,7 @@ Routes
 </a>
 </li>
 <li>
-<a class='' href='./theming.html'>
+<a class='active' href='./theming.html'>
 Theming
 </a>
 </li>
