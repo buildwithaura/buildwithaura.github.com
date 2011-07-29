@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Recipes</title>
+<meta charset='UTF-8' />
+<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
+<meta content='width=device-width, initial-scale=1.0' name='viewport' />
+<link href='./style.css?1311953402' rel='stylesheet' />
+<script src='http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js' type='text/javascript'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+<script src='./proscribe.js?1311953402' type='text/javascript'></script>
+</head>
+<body>
+<div id='top'>
+<a href='' id='logo'>
+Aura manual
+</a>
+</div>
+<div id='area'>
+<div id='content'>
+<div class='c'>
+<div id='crumbs'>
+<a href='./index.html'>Aura manual</a>
+<span class='gt'>&rarr;</span>
+<strong>Recipes</strong>
+</div>
+<hgroup>
+<h1>Recipes</h1>
+</hgroup>
+<div class='content'>
+<h2>Creating custom page types</h2>
+
+<h4>Use subtype</h4>
+
+<p>In your model:</p>
+
+<pre><code>class Page &lt; Sequel::Model
+  subtype :portfolio,
+    :name     =&gt; "Portfolio page",
+    :template =&gt; "id_portfolio"
+
+  custom_field :excerpt
+
+  form :portfolio do
+    text :excerpt, "Portfolio excerpt"
+  end
+end
+</code></pre>
+
+<h2>Adding something to the admin sidebar</h2>
+
+<h4>Adding models</h4>
+
+<p>If it's a model you want on there:</p>
+
+<pre><code>class MyModel &lt; Sequel::Model
+  def self.show_on_sidebar?; true; end
+end
+</code></pre>
+
+<h4>The rest</h4>
+
+<p>For anything else, put this in your app's initializers. (See {Aura::Menu} for more info)</p>
+
+<pre><code>[app/init/menu.rb (ruby)]
+Aura.admin.menu.add "id",
+  :name =&gt; "My menu entry",
+  :href =&gt; '/admin/foo',
+  :icon =&gt; 'settings'
+</code></pre>
+
+
+<section class='footer'>
+<div class='left'>
+<strong>
+Recipes
+<span class='type'>section</span>
+</strong>
+</div>
+</section>
+</div>
+</div>
+<nav id='nav'>
+<nav>
+<h4>Classes</h4>
+<ul>
+<li>
+<a class='more' href='./aura.html'>
+Aura
+</a>
+</li>
+<li>
+<a class='' href='./hasharray.html'>
+HashArray
+</a>
+</li>
+<li>
+<a class='' href='./main.html'>
+Main
+</a>
+</li>
+</ul>
+</nav>
+<nav>
+<h4>Sequel plugins</h4>
+<ul>
+<li>
+<a class='' href='./auraeditable.html'>
+AuraEditable
+</a>
+</li>
+<li>
+<a class='' href='./aurahierarchy.html'>
+AuraHierarchy
+</a>
+</li>
+<li>
+<a class='more' href='./auramodel.html'>
+AuraModel
+</a>
+</li>
+<li>
+<a class='more' href='./aurasluggable.html'>
+AuraSluggable
+</a>
+</li>
+<li>
+<a class='more' href='./aurasubtyped.html'>
+AuraSubtyped
+</a>
+</li>
+</ul>
+</nav>
+<nav>
+<h4>Sections</h4>
+<ul>
+<li>
+<a class='' href='./configuration.html'>
+Configuration
+</a>
+</li>
+<li>
+<a class='' href='./extensions.html'>
+Extensions
+</a>
+</li>
+<li>
+<a class='' href='./files.html'>
+File structure
+</a>
+</li>
+<li>
+<a class='more' href='./helpers.html'>
+Helpers
+</a>
+</li>
+<li>
+<a class='' href='./models.html'>
+Models
+</a>
+</li>
+<li>
+<a class='active' href='./Recipes.html'>
+Recipes
+</a>
+</li>
+<li>
+<a class='' href='./routes.html'>
+Routes
+</a>
+</li>
+<li>
+<a class='' href='./theming.html'>
+Theming
+</a>
+</li>
+<li>
+<a class='' href='./views.html'>
+Views
+</a>
+</li>
+</ul>
+</nav>
+<nav>
+<h4>Models</h4>
+<ul>
+<li>
+<a class='more' href='./page.html'>
+Page
+</a>
+</li>
+<li>
+<a class='more' href='./setting.html'>
+Setting
+</a>
+</li>
+<li>
+<a class='' href='./user.html'>
+User
+</a>
+</li>
+</ul>
+</nav>
+</nav>
+</div>
+</div>
+</body>
+</html>

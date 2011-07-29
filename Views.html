@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Views</title>
+<meta charset='UTF-8' />
+<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
+<meta content='width=device-width, initial-scale=1.0' name='viewport' />
+<link href='./style.css?1311952913' rel='stylesheet' />
+<script src='http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js' type='text/javascript'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+<script src='./proscribe.js?1311952913' type='text/javascript'></script>
+</head>
+<body>
+<div id='top'>
+<a href='' id='logo'>
+Aura manual
+</a>
+</div>
+<div id='area'>
+<div id='content'>
+<div class='c'>
+<div id='crumbs'>
+<a href='./index.html'>Aura manual</a>
+<span class='gt'>&rarr;</span>
+<strong>Views</strong>
+</div>
+<hgroup>
+<h1>Views</h1>
+</hgroup>
+<div class='content'>
+<p>Aura has a unique way of handling views, different from Sinatra's <code>render</code>.</p>
+
+<h4>Creating views</h4>
+
+<p>To create a view, put them in the <code>view/</code> folder of your extension.</p>
+
+<pre><code>[app/views/hello.haml (haml)]
+%h1
+  Hello, world!
+</code></pre>
+
+<h4>Showing views</h4>
+
+<p>Now call it in your Ruby code using <code>show</code>.
+Unlike Sinatra's <code>render</code>, using <code>show</code> will automatically try and find the file
+in the view directories of all extensions, and guess the right filetype based
+on the extension.</p>
+
+<pre><code>[app/routes/hello.rb (ruby)]
+get '/hello' do
+  show :hello
+end
+</code></pre>
+
+<h4>Showing views for models</h4>
+
+<p>You can pass a model to <code>show</code>. In this example, since the record is a <code>Page</code>,
+Aura will render <code>:page/index</code> or <code>:base/index</code>, whichever it finds first.</p>
+
+<pre><code>page = Page['/about.html']
+
+show page, :index
+</code></pre>
+
+<h2>Partials</h2>
+
+<h4>Using Partials</h4>
+
+<p>Aura provides a <code>partial</code> helper.</p>
+
+<pre><code>[app/views/hello.haml (haml)]
+%hgroup
+  != partial :'hello/heading', title: 'Hello'
+</code></pre>
+
+<h4>Defining partials</h4>
+
+<pre><code>[extension/myext/views/hello/heading.haml (haml)]
+%h1= title
+</code></pre>
+
+<h2>Layouts</h2>
+
+<h4>Defining layouts</h4>
+
+<p>Use the <code>layout</code> helper to define which layout will be used. This example will look for
+a view called <code>cart.haml</code> (or any other layout extension).</p>
+
+<pre><code>[app/views/cart/list.haml (haml)]
+- layout 'cart'
+
+%h1 Your shopping cart
+</code></pre>
+
+<h4>Layout files</h4>
+
+<p>Layouts are ordinary view files that use <code>yield</code>.</p>
+
+<pre><code>[app/views/cart.haml (haml)]
+!!! 5
+%html
+  %title Shopping cart
+  %body(class='cart')
+    != yield
+</code></pre>
+
+<h4>Nested layouts</h4>
+
+<p>You may nest layouts using the <code>layout</code> helper in layouts as well. This example
+will place everything inside the <code>default.haml</code> layout.</p>
+
+<pre><code>[app/views/cart.haml (haml)]
+- layout 'default'
+
+%section#cart
+  != yield
+</code></pre>
+
+<h2>Content sections</h2>
+
+<h4>Content sections</h4>
+
+<p>Aura uses <code>sinatra-content-for</code>. In your views, you can use the <code>content_for</code> helper.</p>
+
+<pre><code>[app/views/cart/list.haml (haml)]
+- layout 'cart'
+
+- content_for :sidebar do
+  %h3 Your cart
+  %a(href='/checkout') Checkout
+  %a(href='/') Continue shopping
+</code></pre>
+
+<h4>Defining regions</h4>
+
+<p>In your layout, use <code>yield_content</code> to show the content for it.</p>
+
+<pre><code>[app/views/cart.haml (haml)]
+%aside#sidebar
+  != yield_content :sidebar
+</code></pre>
+
+<h2>View folders</h2>
+
+<p>Using <code>show</code> will find the file in all view directories. Those are:</p>
+
+<ul>
+<li>Your app's view path (<code>app/views/</code>)</li>
+<li>Views in your extensions</li>
+<li>The default views in the Aura gem</li>
+</ul>
+
+
+<h4>Example</h4>
+
+<p>For instance, if you have this structure:</p>
+
+<pre><code>extensions/
+'- one/
+|  '- views/
+|     |- home.haml
+|     '- footer.haml
+'- two/
+   '- views/
+      '- header.erb
+</code></pre>
+
+<h4>for #show</h4>
+
+<p>You can then use:</p>
+
+<pre><code>show :home       # Finds one/views/home.haml
+show :footer     # Finds one/views/footer.haml
+show :header     # Finds two/views/header.erb
+</code></pre>
+
+<h4>for #partial</h4>
+
+<p>This is also done for partials:</p>
+
+<pre><code>partial :header     # Finds views/header.erb
+partial :header, :name =&gt; "Archer"
+</code></pre>
+
+
+<section class='footer'>
+<div class='left'>
+<strong>
+Views
+<span class='type'>section</span>
+</strong>
+</div>
+</section>
+</div>
+</div>
+<nav id='nav'>
+<nav>
+<h4>Classes</h4>
+<ul>
+<li>
+<a class='more' href='./aura.html'>
+Aura
+</a>
+</li>
+<li>
+<a class='' href='./hasharray.html'>
+HashArray
+</a>
+</li>
+<li>
+<a class='' href='./main.html'>
+Main
+</a>
+</li>
+</ul>
+</nav>
+<nav>
+<h4>Sequel plugins</h4>
+<ul>
+<li>
+<a class='' href='./auraeditable.html'>
+AuraEditable
+</a>
+</li>
+<li>
+<a class='' href='./aurahierarchy.html'>
+AuraHierarchy
+</a>
+</li>
+<li>
+<a class='more' href='./auramodel.html'>
+AuraModel
+</a>
+</li>
+<li>
+<a class='more' href='./aurasluggable.html'>
+AuraSluggable
+</a>
+</li>
+<li>
+<a class='more' href='./aurasubtyped.html'>
+AuraSubtyped
+</a>
+</li>
+</ul>
+</nav>
+<nav>
+<h4>Sections</h4>
+<ul>
+<li>
+<a class='' href='./Configuration.html'>
+Configuration
+</a>
+</li>
+<li>
+<a class='' href='./Extensions.html'>
+Extensions
+</a>
+</li>
+<li>
+<a class='' href='./files.html'>
+File structure
+</a>
+</li>
+<li>
+<a class='more' href='./helpers.html'>
+Helpers
+</a>
+</li>
+<li>
+<a class='' href='./Models.html'>
+Models
+</a>
+</li>
+<li>
+<a class='' href='./Recipes.html'>
+Recipes
+</a>
+</li>
+<li>
+<a class='' href='./routes.html'>
+Routes
+</a>
+</li>
+<li>
+<a class='' href='./theming.html'>
+Theming
+</a>
+</li>
+<li>
+<a class='active' href='./Views.html'>
+Views
+</a>
+</li>
+</ul>
+</nav>
+<nav>
+<h4>Models</h4>
+<ul>
+<li>
+<a class='more' href='./page.html'>
+Page
+</a>
+</li>
+<li>
+<a class='more' href='./setting.html'>
+Setting
+</a>
+</li>
+<li>
+<a class='' href='./user.html'>
+User
+</a>
+</li>
+</ul>
+</nav>
+</nav>
+</div>
+</div>
+</body>
+</html>
