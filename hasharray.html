@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<title>AuraHierarchy</title>
+<title>HashArray</title>
 <meta charset='UTF-8' />
 <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
 <meta content='width=device-width, initial-scale=1.0' name='viewport' />
@@ -22,57 +22,58 @@ Aura manual
 <div id='crumbs'>
 <a href='./index.html'>Aura manual</a>
 <span class='gt'>&rarr;</span>
-<strong>AuraHierarchy</strong>
+<strong>HashArray</strong>
 </div>
 <hgroup>
-<h1>AuraHierarchy</h1>
-<h5>Used on models that have children and parents.</h5>
+<h1>HashArray</h1>
+<h5>A stopgap solution to Ruby 1.8's lack of ordered hashes.</h5>
 </hgroup>
 <div class='content'>
-<h2>Description</h2>
+<p>A HashArray, for all intents and purposes, acts like an array. However, the
+common stuff are overloaded to work with hashes.</p>
 
-<p>   This automatically gives models parent/child support.</p>
+<h2>Basic usage</h2>
 
-<h4>How to use</h4>
+<h4>Creating</h4>
 
-<p>Use <code>plugin :aura_hierarchy</code> in your model.</p>
+<p>You can create a HashArray by passing it an array.</p>
 
-<pre><code>class Book &lt; Sequel::Model
-  plugin :aura_hierarchy
-end
+<pre><code>dict = HashArray.new([
+  <a href="./good_morning_/gt_/bonjour.html"> :good_morning =&gt; "Bonjour" </a>,
+  <a href="./goodbye_/gt_/au/revoir_.html"> :goodbye      =&gt; "Au revoir" </a>,
+  <a href="./good_evening_/gt_/bon/nuit_.html"> :good_evening =&gt; "Bon nuit" </a>
+])
 </code></pre>
 
-<h4>Database setup</h4>
+<h4>Converting</h4>
 
-<p>Add <code>:parent_id</code> to your schema.</p>
+<p>You may also use it like so:</p>
 
-<pre><code>database.create_table :books do
-  foreign_key :parent_id
-  # ...
-end
+<pre><code>letters = [ <a href="./a_/gt_/aye.html"> :a =&gt; "Aye"</a>, <a href="./b_/gt_/bee.html"> :b =&gt; "Bee" </a> ].to_hash_array
 </code></pre>
 
-<h4>Example</h4>
+<h4>Iterating</h4>
 
-<p>Our <code>Book</code> class can now have parents and children.</p>
+<p>Now you can use the typical enumerator functions:</p>
 
-<pre><code>book = Book[2]
+<pre><code>dict.each do |(key, value)|
+  puts "#<a href="./key_.html">key</a> is #<a href="./value_.html">value</a>"
+end
 
-# Traversion
-book.parent
-book.children
-book.siblings
+#=&gt; :good_morning is "Bonjour"
+#   :goodbye is "Au revoir"
+#   :good_evening is "Bon nuit"
 </code></pre>
 
 <section class='footer'>
 <div class='left'>
 <strong>
-AuraHierarchy
-<span class='type'>sequel plugin</span>
+HashArray
+<span class='type'>class</span>
 </strong>
 Defined in
-<a href='https:/github.com/aura-cms/aura/blob/c2bf3c7/lib/sequel/plugins/aura_hierarchy.rb#L32'>
-<span>/lib/sequel/plugins/aura_hierarchy.rb</span>
+<a href='https:/github.com/aura-cms/aura/blob/c2bf3c7/lib/core/hasharray.rb#L34'>
+<span>/lib/core/hasharray.rb</span>
 <span class='view-source'>View source &rsaquo;</span>
 </a>
 </div>
@@ -89,7 +90,7 @@ Aura
 </a>
 </li>
 <li>
-<a class='' href='./hasharray.html'>
+<a class='active' href='./hasharray.html'>
 HashArray
 </a>
 </li>
@@ -109,7 +110,7 @@ AuraEditable
 </a>
 </li>
 <li>
-<a class='active' href='./aurahierarchy.html'>
+<a class='' href='./aurahierarchy.html'>
 AuraHierarchy
 </a>
 </li>
