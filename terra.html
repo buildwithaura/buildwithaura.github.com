@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Terra</title>
+<meta charset='UTF-8' />
+<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
+<meta content='width=device-width, initial-scale=1.0' name='viewport' />
+<link href='./style.css?1312239199' rel='stylesheet' />
+<script src='http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js' type='text/javascript'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+<script src='./underscore.js?1312239199' type='text/javascript'></script>
+<script id='proscribe-js' src='./proscribe.js?1312239199' type='text/javascript'></script>
+</head>
+<body>
+<div id='top'>
+<a href='' id='logo'>
+Aura
+</a>
+</div>
+<div id='area'>
+<div id='content'>
+<section id='search'>
+<input placeholder='Search...' type='text' />
+<ul class='results'></ul>
+</section>
+<div class='c'>
+<div id='crumbs'>
+<a href='./index.html'>Aura</a>
+<span class='gt'>&rarr;</span>
+<strong>Terra</strong>
+</div>
+<hgroup>
+<h1>Terra</h1>
+<h5>Terra is a form builder.</h5>
+</hgroup>
+<div class='content'>
+<h4>Form DSL</h4>
+
+<p>Configure your form with a Ruby DSL like so.</p>
+
+<pre><code>form = Terra::Form.new
+form.configure do
+  text :name, "Name"
+  text :email, "Email address"
+
+  fieldset :options, "Options" {
+    textarea :body, "Body", :class =&gt; "hello"
+    select   :type, "Type",
+      :options =&gt; {
+        :red =&gt; "Red",
+        :blue =&gt; "Blue"
+      }
+  }
+end
+</code></pre>
+
+<h2>Using in Aura models</h2>
+
+<h4>Using in Aura models</h4>
+
+<p>In your models, simply use the <code>form</code> method to enclose
+the Terra form DSL in.</p>
+
+<pre><code>class BlogPost &lt; Sequel::Model
+  form {
+    text :title, "Title"
+    text :body,  "Body"
+  }
+end
+</code></pre>
+
+<h4>Accessing</h4>
+
+<p>You'll then be able to access it like so:</p>
+
+<pre><code>BlogPost.form
+BlogPost.form.fieldsets
+</code></pre>
+
+<h4>AuraEditable</h4>
+
+<p>In Aura, by default, if you model uses the <a href="./auraeditable.html">AuraEditable</a> plugin,
+simply define a form and you'll have new/edit pages in the admin
+for your model, automagically.</p>
+
+<pre><code>[app/models/book.rb (rb)]
+class Book &lt; Sequel::Model
+  plugin :aura_editable
+
+  form {
+    # ...
+  }
+ end
+</code></pre>
+
+<h2>Info</h2>
+
+<h4>Defining fields</h4>
+
+<p>Where <code>text</code> is the type of field, <code>:id</code> is the name of the
+field, <code>"Field name"</code> is what's to be displayed, and
+<code>{ options_hash }</code> is an optional list of settings. The field
+type can be any of <code>text</code>|<code>textarea</code>|<code>select</code>|<code>checkbox</code>.</p>
+
+<pre><code>form {
+  text :id, "Field name", { options_hash }
+
+  textarea :body, "Body text"
+  select :category, "Category"
+}
+</code></pre>
+
+<h4>View example</h4>
+
+<p>You'll then be able to use it in your views like so:</p>
+
+<pre><code>[app/views/_form.haml (haml)]
+- form.fieldsets.each do |set|
+
+  -# The fieldset title
+  %h3= set.to_s
+
+  -# Form fields (generates &lt;p&gt;..&lt;label&gt;..&lt;input&gt; for each field)
+  - set.fields.each do |field|
+    = field.to_html
+</code></pre>
+
+<h2>Methods</h2>
+
+<h4>Form methods</h4>
+
+<p>Here are some more useful <a href="./terra/form.html">Form</a> <span class='context'>(Terra)</span> methods.</p>
+
+<pre><code>form.fieldsets                 # Returns an array of fieldsets
+set = form.fieldset(:default)  # Returns a fieldset by name
+</code></pre>
+
+<h4>Fieldset methods</h4>
+
+<p>Here are some more useful <a href="./terra/fieldset.html">Fieldset</a> <span class='context'>(Terra)</span> methods.</p>
+
+<pre><code>set.fields                # Returns a fieldset's fields
+set.to_html               # Returns &lt;fieldset&gt;..&lt;/fieldset&gt; HTML
+set.to_html(object)       # Same as above, but tries to get data from `object.field_name`
+set.name                  # Returns the name of the field
+field = set.field(:name)  # Returns a field by name
+</code></pre>
+
+<h4>Field methods</h4>
+
+<p>Here are some more useful <a href="./terra/field.html">Field</a> <span class='context'>(Terra)</span> methods.</p>
+
+<pre><code>field.to_html             # &lt;p&gt;..&lt;label&gt;..&lt;input&gt;..&lt;/p&gt;
+field.to_html(val)        # Like above, but with a certain value
+field.input_html          # just &lt;input&gt;
+field.label_html          # just &lt;label&gt;
+</code></pre>
+
+<p>No, there's no <code>form.to_html</code>. Geez, don't even think about it--
+just render each of the fields/fieldsets.</p>
+
+<h2>In practice</h2>
+
+<h4>HAML example</h4>
+
+<p>This is how you would render a form in HAML.</p>
+
+<pre><code>[app/views/_form.haml (haml)]
+%form{ :method =&gt; 'post', :action =&gt; '/save' }
+  - form.fieldsets.each do |set|
+    !~ set.to_html(@object)
+
+  %p.submit
+    %button{ :type =&gt; 'submit' } Save
+
+# HAML tip: use !~ instead of = to have your textareas
+# flow correctly by supressing HAML's extra whitespaces.
+</code></pre>
+
+<h4>More</h4>
+
+<pre><code>[app/views/_form.haml (haml)]
+= form.fieldsets.first.to_html
+= form.fieldsets.first.fields.first.to_html
+
+= form.fieldset(:default).to_html
+= form.fieldset(:default).field(:name).to_html
+= form.fieldset(:default).field(:name).to_html("Hello") # value
+</code></pre>
+
+<h3>
+Classes
+</h3>
+<ul class='section'>
+<li>
+<a href='./terra/field.html'>Field</a>
+<span class='brief'>A field.</span>
+</li>
+<li>
+<a href='./terra/fieldset.html'>Fieldset</a>
+<span class='brief'>A fieldset.</span>
+</li>
+<li>
+<a href='./terra/form.html'>Form</a>
+<span class='brief'>Terra is an HTML form generator.</span>
+</li>
+</ul>
+<h3>
+Modules
+</h3>
+<ul class='section'>
+<li>
+<a href='./terra/fields.html'>Fields</a>
+<span class='brief'>A module that is the namespace for all types of fields.</span>
+</li>
+</ul>
+
+<section class='footer'>
+<div class='left'>
+<strong>
+Terra
+<span class='type'>module</span>
+</strong>
+Defined in
+<a href='https:/github.com/buildwithaura/aura/blob/7faaf27/lib/terra.rb#L137'>
+<span>/lib/terra.rb</span>
+<span class='view-source'>View source &rsaquo;</span>
+</a>
+</div>
+</section>
+</div>
+</div>
+<nav id='nav'>
+<nav class='parents'>
+<ul>
+<li>
+<a href='./index.html'>
+<span class='back'>&lsaquo;</span>
+<em></em>
+Aura
+</a>
+</li>
+<li>
+<a class='active' href='./terra.html'>
+<em>module</em>
+Terra
+</a>
+</li>
+</ul>
+</nav>
+<nav>
+<h4>Classes</h4>
+<ul>
+<li>
+<a class='more' href='./terra/field.html'>
+Field
+</a>
+</li>
+<li>
+<a class='more' href='./terra/fieldset.html'>
+Fieldset
+</a>
+</li>
+<li>
+<a class='more' href='./terra/form.html'>
+Form
+</a>
+</li>
+</ul>
+</nav>
+<nav>
+<h4>Modules</h4>
+<ul>
+<li>
+<a class='more' href='./terra/fields.html'>
+Fields
+</a>
+</li>
+</ul>
+</nav>
+</nav>
+</div>
+</div>
+<script src='./search_index.js?1312239221' type='text/javascript'></script>
+</body>
+</html>
